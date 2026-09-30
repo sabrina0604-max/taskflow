@@ -1,0 +1,47 @@
+.sidebar{
+    box-sizing: border-box;
+    background-color: #f2f5fd;
+    width: 300px;
+    height: 100vh;
+    padding: 30px 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+a{
+    text-decoration: none;
+    color: #6b7a9d;
+    font-size: 17px;
+    opacity: 0.8;
+    transition: 0.4s;
+}
+
+a:hover{
+    opacity: 1;
+}
+
+#nav-lista{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#logo{
+    font-size: 32px;
+    margin-bottom: 30px ;
+}
+
+.destaque{
+    color: #556ae8;
+}
+
+.frase-motivacional{
+    color: #6b7a9d;
+    font-size: 15px;
+}
+
+#frase{
+    margin-bottom: 10px;
+}

@@ -1,0 +1,26 @@
+.tela-principal{
+    padding: 30px 40px;
+    height: 100vh;
+    width: 100%;
+    background-color: #F8F9FC;
+}
+
+.cards-resumo{
+    display: flex;
+    justify-content: space-around;
+}
+
+.apresentacao{
+    margin-bottom: 40px;
+}
+
+.apresentacao h1{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.apresentacao p{
+    font-size: 15px;
+    font-weight: bold;
+    color: #6b7a9d;
+}

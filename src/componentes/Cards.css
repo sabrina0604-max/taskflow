@@ -1,0 +1,66 @@
+.cards{
+    box-sizing: border-box;
+    width: 300px;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid #E6E9F2;
+    cursor: pointer;
+    transition: 0.4s;
+    font-size: 20px;
+}
+
+.cards:hover{
+    transform: translateY(-5px);
+}
+
+.icone{
+    font-size: 30px;
+}
+
+.pendentes,
+.concluidas,
+.atrasadas,
+.tarefas{
+    display: flex;
+    border-radius: 30px;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pendentes{
+    color: #dd4656;
+    background-color: #fdeff0;
+}
+
+.concluidas{
+    color: #22a06b;
+    background-color: #ecf8f1;
+}
+
+.atrasadas{
+    color: #8b5de8;
+    background-color: #f1ecfd;
+}
+
+.tarefas{
+    color: #556ae8;
+    background-color: #eef1ff;
+}
+
+.descricao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+
+
+
