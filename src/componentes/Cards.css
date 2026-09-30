@@ -1,6 +1,6 @@
 .cards{
     box-sizing: border-box;
-    width: 300px;
+    width: 350px;
     padding: 25px;
     border-radius: 12px;
     background-color: #fff;
@@ -11,20 +11,53 @@
     cursor: pointer;
     transition: 0.4s;
     font-size: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.cards.tarefas{
+    background-color: #F3F7FE;
+}
+
+.cards.tarefas:hover{
+    border-color: #3D7EF5;
+}
+
+.cards.atrasadas{
+    background-color: #F6F6FE;
+}
+
+.cards.atrasadas:hover{
+    border-color: #8B5DE8;
+}
+
+.cards.concluidas{
+    background-color: #F2FAF7;
+}
+
+.cards.concluidas:hover{
+    border-color: #2FA765;
+}
+
+.cards.pendentes{
+    background-color: #FDF9F1;
+}
+
+.cards.pendentes:hover{
+    border-color: #E9910B;
 }
 
 .cards:hover{
     transform: translateY(-5px);
 }
 
-.icone{
+#icone{
     font-size: 30px;
 }
 
-.pendentes,
-.concluidas,
-.atrasadas,
-.tarefas{
+.pendentes #icone,
+.concluidas #icone,
+.atrasadas #icone,
+.tarefas #icone{
     display: flex;
     border-radius: 30px;
     height: 60px;
@@ -33,24 +66,24 @@
     align-items: center;
 }
 
-.pendentes{
-    color: #dd4656;
-    background-color: #fdeff0;
+.pendentes #icone{
+    color: #E9910B;
+    background-color: #FDE0A5;
 }
 
-.concluidas{
-    color: #22a06b;
-    background-color: #ecf8f1;
+.concluidas #icone{
+    color: #2FA765;
+    background-color: #B8E5C9;
 }
 
-.atrasadas{
-    color: #8b5de8;
-    background-color: #f1ecfd;
+.atrasadas #icone{
+    color: #8B5DE8;
+    background-color: #E2D7FC;
 }
 
-.tarefas{
-    color: #556ae8;
-    background-color: #eef1ff;
+.tarefas #icone{
+    color: #3D7EF5;
+    background-color: #C0D8FD;
 }
 
 .descricao{

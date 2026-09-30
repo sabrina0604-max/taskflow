@@ -13,12 +13,11 @@ a{
     text-decoration: none;
     color: #6b7a9d;
     font-size: 17px;
-    opacity: 0.8;
     transition: 0.4s;
 }
 
 a:hover{
-    opacity: 1;
+    color: #313744;
 }
 
 #nav-lista{

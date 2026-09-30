@@ -1,0 +1,10 @@
+.btn-principal{
+    background-color: #556AE8;
+    color: #fff;
+    opacity: 0.9;
+    transition: 0.4s;
+}
+
+.btn-principal:hover{
+    opacity: 1;
+}
