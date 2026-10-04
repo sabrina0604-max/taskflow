@@ -1,0 +1,62 @@
+.lista{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.marcacao{
+    display: flex;
+}
+
+.descricao{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.descricao .titulo{
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tipos{
+    font-size: 15px;
+    color: #6b7a9d;
+}
+
+.acoes{
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+    gap: 20px;
+}
+
+.conclusao{
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.acoes .true{
+    background-color: #ECFDF3;
+    color: #16A34A;
+}
+
+.acoes .false{
+    background-color: #FFF1F2;
+    color: #EF4444;
+}
+
+.linha{
+    border-top: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.linha:last-child{
+    border: none;
+}

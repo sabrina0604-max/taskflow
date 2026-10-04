@@ -3,6 +3,7 @@ import { faClipboardList, faClock, faCheck, faStar } from "@fortawesome/free-sol
 import Cards from "../componentes/Cards"
 import './Inicio.css'
 import Button from "../componentes/Button"
+import ListaTarefas from "../componentes/ListaTarefas"
 
 function Inicio(){
 
@@ -46,6 +47,18 @@ function Inicio(){
                 </select>
                 <Button variante="btn-principal" titulo="+ Nova Tarefa"/>
             </nav>
+            <div className="lista-de-tarefas">
+                <h2>Tarefas</h2>
+                <div>
+                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={false}/>                   
+                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={true}/> 
+                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={false}/> 
+                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={false}/> 
+                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={false}/> 
+                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={true}/> 
+                </div>
+            </div>
+            
         </div>
     )
 }
