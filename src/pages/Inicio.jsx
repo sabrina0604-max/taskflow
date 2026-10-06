@@ -25,7 +25,7 @@ function Inicio(){
                     name="buscarTarefa"
                     placeholder="Buscar Tarefa..."
                 />
-                <select name="tarefas" className="select">
+                <select name="status" className="select">
                     <option value="todas">Todas</option>
                     <option value="pendentes">Pendentes</option>
                     <option value="concluidas">Concluídas</option>

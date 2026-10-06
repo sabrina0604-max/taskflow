@@ -1,8 +1,16 @@
+button{
+    opacity: 0.9;
+    transition: 0.4s;
+    font-size: 15px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 12px;
+}
+
 .btn-principal{
     background-color: #556AE8;
     color: #fff;
-    opacity: 0.9;
-    transition: 0.4s;
 }
 
 .btn-principal:hover{
