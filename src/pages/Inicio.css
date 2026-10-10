@@ -64,3 +64,11 @@
     margin-bottom: 20px;
     font-size: 25px;
 }
+
+.vazio{
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 30px;
+    color: #6b7a9d;
+    padding: 24px 16px;
+}

@@ -5,7 +5,7 @@ import './Inicio.css'
 import Button from "../componentes/Button"
 import ListaTarefas from "../componentes/ListaTarefas"
 
-function Inicio({aoCriarTarefa}){
+function Inicio({aoCriarTarefa, tarefas}){
 
     return(
         <div className="tela-principal">
@@ -50,12 +50,19 @@ function Inicio({aoCriarTarefa}){
             <div className="lista-de-tarefas">
                 <h2>Tarefas</h2>
                 <div>
-                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={false}/>                   
-                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={true}/> 
-                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={false}/> 
-                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={false}/> 
-                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={false}/> 
-                    <ListaTarefas titulo="Estudar React" categoria="Estudos" prioridade="Alta Prioridade" conclusao={true}/> 
+                    {tarefas.length === 0 ? (
+                        <div className="vazio">Não existem tarefas</div>
+                        ):(
+                        tarefas.map((tarefa, index)=>(
+                            <ListaTarefas 
+                                key={index} 
+                                titulo={tarefa.titulo} 
+                                categoria={tarefa.categoria} 
+                                prioridade={tarefa.prioridade}
+                                conclusao={tarefa.status === "concluida"}
+                            />
+                        ))
+                    )}
                 </div>
             </div>
             

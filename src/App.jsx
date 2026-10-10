@@ -7,6 +7,11 @@ import NovaTarefa from './pages/NovaTarefa'
 function App() {
 
   const [telaAtual, setTelaAtual] = useState("inicio")
+  const [tarefas, setTarefas] = useState([])
+
+  function adicionarTarefa(novaTarefa){
+    setTarefas([...tarefas, novaTarefa])
+  }
 
   function mudarTela(novaTela){
     setTelaAtual(novaTela);
@@ -16,9 +21,13 @@ function App() {
     <div className='app'>
       <Sidebar/>
       {telaAtual === "inicio" ? (
-        <Inicio aoCriarTarefa={() => mudarTela("novaTarefa")}/>
+        <Inicio 
+        aoCriarTarefa={() => mudarTela("novaTarefa")}
+        tarefas={tarefas}/>
       ):(
-        <NovaTarefa aoCancelar={() => mudarTela("inicio")}/>
+        <NovaTarefa 
+        aoCancelar={() => mudarTela("inicio")}
+        aoCriarTarefa={adicionarTarefa} />
       )}
     
     </div>

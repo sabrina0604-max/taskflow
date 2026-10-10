@@ -2,7 +2,7 @@ import { useState } from "react"
 import Button from "../componentes/Button"
 import './NovaTarefa.css'
 
-function NovaTarefa({aoCancelar}){
+function NovaTarefa({aoCancelar, aoCriarTarefa}){
 
     const [titulo, setTitulo] = useState("")
     const [categoria, setCategoria] = useState("")
@@ -36,12 +36,26 @@ function NovaTarefa({aoCancelar}){
         setVencimento(e.target.value)
     }
 
+    function criarTarefa(e){
+        e.preventDefault()
+        const tarefa ={
+            titulo,
+            categoria,
+            prioridade,
+            vencimento,
+            status,
+            descricao
+        }
+        aoCriarTarefa(tarefa)
+        aoCancelar()
+    }
+
     return(
         <div className="novaTarefa">
             <h1>Nova Tarefa</h1>
             <p>Preencha os dados abaixo para adicionar uma nova tarefa</p>
             
-            <form className="form-Tarefa">
+            <form className="form-Tarefa" onSubmit={criarTarefa}>
 
                 <div className="campo campo-titulo">
                     <label htmlFor="titulo">Titulo da Tarefa *</label>
@@ -91,8 +105,8 @@ function NovaTarefa({aoCancelar}){
                 </div>
 
                 <div className="botoes">
-                    <Button titulo="Cancelar" onClick={aoCancelar}/>
-                    <Button variante="btn-principal" titulo="+ Criar tarefa"/>
+                    <Button titulo="Cancelar" onClick={aoCancelar} type="button"/>
+                    <Button variante="btn-principal" titulo="+ Criar tarefa" type="submit"/>
                 </div>
             </form>
         </div>
