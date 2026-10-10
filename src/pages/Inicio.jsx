@@ -5,7 +5,7 @@ import './Inicio.css'
 import Button from "../componentes/Button"
 import ListaTarefas from "../componentes/ListaTarefas"
 
-function Inicio(){
+function Inicio({aoCriarTarefa}){
 
     return(
         <div className="tela-principal">
@@ -45,7 +45,7 @@ function Inicio(){
                     <option value="pessoal">Pessoal</option>
                     <option value="lazer">Lazer</option>
                 </select>
-                <Button variante="btn-principal" titulo="+ Nova Tarefa"/>
+                <Button variante="btn-principal" titulo="+ Nova Tarefa" onClick={aoCriarTarefa}/>
             </nav>
             <div className="lista-de-tarefas">
                 <h2>Tarefas</h2>
