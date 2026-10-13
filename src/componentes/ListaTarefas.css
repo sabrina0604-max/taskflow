@@ -33,7 +33,7 @@
     gap: 20px;
 }
 
-.conclusao{
+.status{
     color: #fff;
     padding: 10px;
     border: none;
@@ -42,12 +42,12 @@
     align-items: center;
 }
 
-.acoes .true{
+.status.true{
     background-color: #ECFDF3;
     color: #16A34A;
 }
 
-.acoes .false{
+.status.false{
     background-color: #FFF1F2;
     color: #EF4444;
 }

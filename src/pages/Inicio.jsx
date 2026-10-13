@@ -7,6 +7,14 @@ import ListaTarefas from "../componentes/ListaTarefas"
 
 function Inicio({aoCriarTarefa, tarefas}){
 
+    const tarefasPendentes = tarefas.filter((tarefa) => {
+        return tarefa.status === "pendentes"
+    })
+
+    const tarefasConcluidas = tarefas.filter((tarefa) => {
+        return tarefa.status === "concluidas"
+    })
+
     return(
         <div className="tela-principal">
             <div className="apresentacao">
@@ -14,9 +22,9 @@ function Inicio({aoCriarTarefa, tarefas}){
                 <p>Organize seu dia e matenha o foto nos seus objetivos.</p>
             </div>
             <div className="cards-resumo">
-                <Cards variante="tarefas" icone={<FontAwesomeIcon icon={faClipboardList}/>} titulo="Total de tarefas" quantidade={5}/>
-                <Cards variante="pendentes" icone={<FontAwesomeIcon icon={faClock} />} titulo="Pendentes" quantidade={2}/>
-                <Cards variante="concluidas" icone={<FontAwesomeIcon icon={faCheck} />} titulo="Concluídas" quantidade={4}/>
+                <Cards variante="tarefas" icone={<FontAwesomeIcon icon={faClipboardList}/>} titulo="Total de tarefas" quantidade={tarefas.length}/>
+                <Cards variante="pendentes" icone={<FontAwesomeIcon icon={faClock} />} titulo="Pendentes" quantidade={tarefasPendentes.length}/>
+                <Cards variante="concluidas" icone={<FontAwesomeIcon icon={faCheck} />} titulo="Concluídas" quantidade={tarefasConcluidas.length}/>
                 <Cards variante="atrasadas" icone={<FontAwesomeIcon icon={faStar} />} titulo="Atrasadas" quantidade={0}/>
             </div>
             <nav className="pesquisa">
@@ -59,7 +67,7 @@ function Inicio({aoCriarTarefa, tarefas}){
                                 titulo={tarefa.titulo} 
                                 categoria={tarefa.categoria} 
                                 prioridade={tarefa.prioridade}
-                                conclusao={tarefa.status === "concluida"}
+                                status={tarefa.status === "concluidas"}
                             />
                         ))
                     )}

@@ -5,12 +5,12 @@ import './ListaTarefas.css'
 
 
 
-function ListaTarefas({titulo, categoria, prioridade, conclusao}){
+function ListaTarefas({titulo, categoria, prioridade, status}){
     return(
         <>
         <div className='lista'>
             <div className='marcacao'>
-                <input type='checkbox' name={titulo} value={conclusao}/>
+                <input type='checkbox' name={titulo} value={status}/>
                 <div className='descricao'>
                     <div>
                         <p className='titulo'>{titulo}</p>
@@ -20,10 +20,10 @@ function ListaTarefas({titulo, categoria, prioridade, conclusao}){
             </div>
 
             <div className='acoes'>    
-                {conclusao ?(
-                    <p className='conclusao true'>Concluida</p>
+                {status ?(
+                    <p className='status true'>Concluida</p>
                 ):(
-                    <p className='conclusao false'>Pendente</p>
+                    <p className='status false'>Pendente</p>
                 )}
                 <Button variante="simples" titulo={<FontAwesomeIcon icon={faPencil} />}/>
                 <Button variante="simples" titulo={<FontAwesomeIcon icon={faTrash} />}/>

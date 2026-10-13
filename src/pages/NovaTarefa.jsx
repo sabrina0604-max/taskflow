@@ -7,7 +7,7 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
     const [titulo, setTitulo] = useState("")
     const [categoria, setCategoria] = useState("")
     const [prioridade, setPrioridade] = useState("")
-    const [status, setStatus] = useState("")
+    const [status, setStatus] = useState("pendentes")
     const [descricao, setDescricao] = useState("")
     const [vencimento, setVencimento] = useState("")
 
@@ -46,6 +46,7 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
             status,
             descricao
         }
+        
         aoCriarTarefa(tarefa)
         aoCancelar()
     }
