@@ -39,6 +39,7 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
     function criarTarefa(e){
         e.preventDefault()
         const tarefa ={
+            id: crypto.randomUUID(),
             titulo,
             categoria,
             prioridade,

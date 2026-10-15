@@ -5,7 +5,7 @@ import './Inicio.css'
 import Button from "../componentes/Button"
 import ListaTarefas from "../componentes/ListaTarefas"
 
-function Inicio({aoCriarTarefa, tarefas}){
+function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa}){
 
     const tarefasPendentes = tarefas.filter((tarefa) => {
         return tarefa.status === "pendentes"
@@ -14,6 +14,7 @@ function Inicio({aoCriarTarefa, tarefas}){
     const tarefasConcluidas = tarefas.filter((tarefa) => {
         return tarefa.status === "concluidas"
     })
+
 
     return(
         <div className="tela-principal">
@@ -61,13 +62,15 @@ function Inicio({aoCriarTarefa, tarefas}){
                     {tarefas.length === 0 ? (
                         <div className="vazio">Não existem tarefas</div>
                         ):(
-                        tarefas.map((tarefa, index)=>(
+                        tarefas.map((tarefa, id)=>(
                             <ListaTarefas 
-                                key={index} 
+                                id={tarefa.id}
                                 titulo={tarefa.titulo} 
                                 categoria={tarefa.categoria} 
                                 prioridade={tarefa.prioridade}
                                 status={tarefa.status === "concluidas"}
+                                alternarStatusTarefa={alternarStatusTarefa}
+                                excluirTarefa={excluirTarefa}
                             />
                         ))
                     )}

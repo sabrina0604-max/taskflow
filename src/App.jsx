@@ -13,9 +13,27 @@ function App() {
     setTarefas([...tarefas, novaTarefa])
   }
 
+  function alternarStatusTarefa(id) {
+    setTarefas(tarefas.map((tarefa) => {
+      if(tarefa.id === id){
+        if(tarefa.status === "pendentes"){
+          return {...tarefa, status:"concluidas"}
+        }else if(tarefa.status === "concluidas"){
+          return {...tarefa, status:"pendentes"}
+        }  
+      }
+      return tarefa
+  }))}
+
   function mudarTela(novaTela){
     setTelaAtual(novaTela);
   }
+
+  function excluirTarefa(id){
+    setTarefas(tarefas.filter((tarefa) =>tarefa.id !== id))
+  }
+
+
 
   return (
     <div className='app'>
@@ -23,7 +41,9 @@ function App() {
       {telaAtual === "inicio" ? (
         <Inicio 
         aoCriarTarefa={() => mudarTela("novaTarefa")}
-        tarefas={tarefas}/>
+        tarefas={tarefas}
+        alternarStatusTarefa={alternarStatusTarefa}
+        excluirTarefa={excluirTarefa}/>
       ):(
         <NovaTarefa 
         aoCancelar={() => mudarTela("inicio")}

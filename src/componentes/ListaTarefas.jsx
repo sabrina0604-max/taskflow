@@ -5,12 +5,12 @@ import './ListaTarefas.css'
 
 
 
-function ListaTarefas({titulo, categoria, prioridade, status}){
+function ListaTarefas({id, titulo, categoria, prioridade, status, alternarStatusTarefa, excluirTarefa}){
     return(
         <>
         <div className='lista'>
             <div className='marcacao'>
-                <input type='checkbox' name={titulo} value={status}/>
+                <input type='checkbox' name={titulo} checked={status} onChange={() => alternarStatusTarefa(id)}/>
                 <div className='descricao'>
                     <div>
                         <p className='titulo'>{titulo}</p>
@@ -25,8 +25,8 @@ function ListaTarefas({titulo, categoria, prioridade, status}){
                 ):(
                     <p className='status false'>Pendente</p>
                 )}
-                <Button variante="simples" titulo={<FontAwesomeIcon icon={faPencil} />}/>
-                <Button variante="simples" titulo={<FontAwesomeIcon icon={faTrash} />}/>
+                <Button variante="simples" titulo={<FontAwesomeIcon icon={faPencil}/>}/>
+                <Button variante="simples" titulo={<FontAwesomeIcon icon={faTrash}/>} onClick={()=> excluirTarefa(id)}/>
             </div>    
         </div>
         <div className='linha'></div>
