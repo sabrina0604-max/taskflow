@@ -5,7 +5,7 @@ import './ListaTarefas.css'
 
 
 
-function ListaTarefas({id, titulo, categoria, prioridade, status, alternarStatusTarefa, excluirTarefa}){
+function ListaTarefas({id, titulo, categoria, prioridade, status, alternarStatusTarefa, excluirTarefa, editarTarefa}){
     return(
         <>
         <div className='lista'>
@@ -20,13 +20,26 @@ function ListaTarefas({id, titulo, categoria, prioridade, status, alternarStatus
             </div>
 
             <div className='acoes'>    
+
                 {status ?(
                     <p className='status true'>Concluida</p>
                 ):(
                     <p className='status false'>Pendente</p>
                 )}
-                <Button variante="simples" titulo={<FontAwesomeIcon icon={faPencil}/>}/>
-                <Button variante="simples" titulo={<FontAwesomeIcon icon={faTrash}/>} onClick={()=> excluirTarefa(id)}/>
+
+                <Button 
+                    variante="simples" 
+                    titulo={<FontAwesomeIcon icon={faPencil}/>} 
+                    onClick={() => editarTarefa(id)}
+                />
+
+                <Button 
+                    variante="simples" 
+                    titulo={<FontAwesomeIcon 
+                    icon={faTrash}/>} 
+                    onClick={() => excluirTarefa(id)}
+                />
+                
             </div>    
         </div>
         <div className='linha'></div>

@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Button from "../componentes/Button"
 import './NovaTarefa.css'
 
-function NovaTarefa({aoCancelar, aoCriarTarefa}){
+function NovaTarefa({aoCancelar, aoCriarTarefa, tarefaEditando}){
 
     const [titulo, setTitulo] = useState("")
     const [categoria, setCategoria] = useState("")
@@ -11,10 +11,21 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
     const [descricao, setDescricao] = useState("")
     const [vencimento, setVencimento] = useState("")
 
+    useEffect(() => {
+        if(tarefaEditando) {
+            setTitulo(tarefaEditando.titulo)
+            setCategoria(tarefaEditando.categoria)
+            setPrioridade(tarefaEditando.prioridade)
+            setStatus(tarefaEditando.status)
+            setVencimento(tarefaEditando.vencimento)
+            setDescricao(tarefaEditando.descricao)
+        }
+    },[tarefaEditando])
+
     function criarTarefa(e){
         e.preventDefault()
         const tarefa ={
-            id: crypto.randomUUID(),
+            id: tarefaEditando ? tarefaEditando.id : crypto.randomUUID(),
             titulo,
             categoria,
             prioridade,
@@ -116,8 +127,16 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
                 </div>
 
                 <div className="botoes">
-                    <Button titulo="Cancelar" onClick={aoCancelar} type="button"/>
-                    <Button variante="btn-principal" titulo="+ Criar tarefa" type="submit"/>
+                    <Button 
+                        titulo="Cancelar" 
+                        onClick={aoCancelar} 
+                        type="button"
+                    />
+                    <Button 
+                        variante="btn-principal" 
+                        titulo={tarefaEditando ? "Salvar alterações" : "+ Criar tarefa"} 
+                        type="submit"
+                    />
                 </div>
             </form>
         </div>

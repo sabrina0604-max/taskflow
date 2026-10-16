@@ -6,7 +6,7 @@ import Button from "../componentes/Button"
 import ListaTarefas from "../componentes/ListaTarefas"
 import { useState } from "react"
 
-function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa}){
+function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa, editarTarefa}){
 
     const [filtroTitulo, setFiltroTitulo] = useState("")
     const [filtroStatus, setFiltroStatus] = useState("todas")
@@ -26,7 +26,7 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa}){
             (filtroStatus === "todas" || tarefa.status === filtroStatus) &&
             (filtroPrioridade === "" || tarefa.prioridade === filtroPrioridade) &&
             (filtroCategoria === "" || tarefa.categoria === filtroCategoria) &&
-            (filtroTitulo === "" || tarefa.titulo.toLowerCase().includes(filtroTitulo))
+            (filtroTitulo === "" || tarefa.titulo.toLowerCase().includes(filtroTitulo.toLowerCase()))
         )
     })
 
@@ -101,8 +101,9 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa}){
                     {tarefasFiltradas.length === 0 ? (
                         <div className="vazio">Não existem tarefas</div>
                         ):(
-                        tarefasFiltradas.map((tarefa, id)=>(
+                        tarefasFiltradas.map((tarefa)=>(
                             <ListaTarefas 
+                                key={tarefa.id}
                                 id={tarefa.id}
                                 titulo={tarefa.titulo} 
                                 categoria={tarefa.categoria} 
@@ -110,6 +111,7 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa}){
                                 status={tarefa.status === "concluidas"}
                                 alternarStatusTarefa={alternarStatusTarefa}
                                 excluirTarefa={excluirTarefa}
+                                editarTarefa={editarTarefa}
                             />
                         ))
                     )}
