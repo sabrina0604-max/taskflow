@@ -11,31 +11,6 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
     const [descricao, setDescricao] = useState("")
     const [vencimento, setVencimento] = useState("")
 
-
-    function atualizarTitulo(e){
-        setTitulo(e.target.value)
-    }
-
-    function atualizarCategoria(e){
-        setCategoria(e.target.value)
-    }
-
-    function atualizarPrioridade(e){
-        setPrioridade(e.target.value)
-    }
-
-    function atualizarStatus(e){
-        setStatus(e.target.value)
-    }
-
-    function atualizarDescricao(e){
-        setDescricao(e.target.value)
-    }
-
-    function atualizarVencimento(e){
-        setVencimento(e.target.value)
-    }
-
     function criarTarefa(e){
         e.preventDefault()
         const tarefa ={
@@ -61,13 +36,25 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
 
                 <div className="campo campo-titulo">
                     <label htmlFor="titulo">Titulo da Tarefa *</label>
-                    <input id="titulo" type="text" name="titulo" placeholder="Ex: Estudar React" onChange={atualizarTitulo} value={titulo}/>
+                    <input 
+                        id="titulo" 
+                        type="text" 
+                        name="titulo" 
+                        placeholder="Ex: Estudar React" 
+                        onChange={(e) => setTitulo(e.target.value)} 
+                        value={titulo}
+                    />
                 </div>
 
                 <div className="opcoes">
                     <div className="campo">
                         <label htmlFor="categoria">Categoria *</label>
-                        <select id="categoria" name="categoria" onChange={atualizarCategoria} value={categoria}>
+                        <select 
+                            id="categoria" 
+                            name="categoria" 
+                            onChange={(e) => setCategoria(e.target.value)} 
+                            value={categoria}
+                        >
                             <option value="estudos">Estudos</option>
                             <option value="projetos">Projetos</option>
                             <option value="carreira">Carreira</option>
@@ -78,7 +65,12 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
                     
                     <div className="campo">
                         <label htmlFor="prioridade">Prioridade *</label>
-                        <select id="prioridade" name="prioridade" onChange={atualizarPrioridade} value={prioridade}>
+                        <select 
+                            id="prioridade" 
+                            name="prioridade" 
+                            onChange={(e) => setPrioridade(e.target.value)} 
+                            value={prioridade}
+                        >
                             <option value="">Selecione a prioridade</option>
                             <option value="alta">Alta prioridade</option>
                             <option value="media">Média prioridade</option>
@@ -88,13 +80,24 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
 
                     <div className="campo">
                         <label htmlFor="vencimento">Data de vencimento *</label>
-                        <input id="vencimento" type="date" name="vencimento" onChange={atualizarVencimento} value={vencimento}/>
+                        <input 
+                            id="vencimento" 
+                            type="date" 
+                            name="vencimento" 
+                            onChange={(e) => setVencimento(e.target.value)} 
+                            value={vencimento}
+                                />
                     </div>  
                       
    
                     <div className="campo">
                         <label htmlFor="status">Status *</label>
-                        <select id="status" name="status" onChange={atualizarStatus} value={status}>
+                        <select 
+                            id="status" 
+                            name="status" 
+                            onChange={(e) => setStatus(e.target.value)} 
+                            value={status}
+                        >
                             <option value="pendentes">Pendente</option>
                             <option value="concluidas">Concluída</option>
                         </select>
@@ -103,7 +106,13 @@ function NovaTarefa({aoCancelar, aoCriarTarefa}){
 
                 <div className="campo campo-descricao">
                     <label htmlFor="descricao">Descrição</label>
-                    <textarea id="descricao" name="descricao" placeholder="Adicione mais detalhes sobre a tarefa..." onChange={atualizarDescricao} value={descricao}/>
+                    <textarea 
+                        id="descricao" 
+                        name="descricao" 
+                        placeholder="Adicione mais detalhes sobre a tarefa..." 
+                        onChange={(e) => setDescricao(e.target.value)} 
+                        value={descricao}
+                    />
                 </div>
 
                 <div className="botoes">

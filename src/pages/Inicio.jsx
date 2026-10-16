@@ -4,8 +4,14 @@ import Cards from "../componentes/Cards"
 import './Inicio.css'
 import Button from "../componentes/Button"
 import ListaTarefas from "../componentes/ListaTarefas"
+import { useState } from "react"
 
 function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa}){
+
+    const [filtroTitulo, setFiltroTitulo] = useState("")
+    const [filtroStatus, setFiltroStatus] = useState("todas")
+    const [filtroCategoria, setFiltroCategoria] = useState("")
+    const [filtroPrioridade, setFiltroPrioridade] = useState("")
 
     const tarefasPendentes = tarefas.filter((tarefa) => {
         return tarefa.status === "pendentes"
@@ -13,6 +19,15 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa}){
 
     const tarefasConcluidas = tarefas.filter((tarefa) => {
         return tarefa.status === "concluidas"
+    })
+
+    const tarefasFiltradas = tarefas.filter((tarefa) => {
+        return (
+            (filtroStatus === "todas" || tarefa.status === filtroStatus) &&
+            (filtroPrioridade === "" || tarefa.prioridade === filtroPrioridade) &&
+            (filtroCategoria === "" || tarefa.categoria === filtroCategoria) &&
+            (filtroTitulo === "" || tarefa.titulo.toLowerCase().includes(filtroTitulo))
+        )
     })
 
 
@@ -29,40 +44,64 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa}){
                 <Cards variante="atrasadas" icone={<FontAwesomeIcon icon={faStar} />} titulo="Atrasadas" quantidade={0}/>
             </div>
             <nav className="pesquisa">
+
                 <input className="buscarTarefa"
                     type="text" 
                     name="buscarTarefa"
                     placeholder="Buscar Tarefa..."
+                    onChange={(e)=> setFiltroTitulo(e.target.value)}
+                    value={filtroTitulo}
                 />
-                <select name="status" className="select">
+
+                <select 
+                    name="status" 
+                    className="select" 
+                    onChange={(e) => setFiltroStatus(e.target.value)}
+                    value={filtroStatus}
+                >
                     <option value="todas">Todas</option>
                     <option value="pendentes">Pendentes</option>
                     <option value="concluidas">Concluídas</option>
                     <option value="atrasadas">Atrasadas</option>
                 </select>
-                <select name="prioridade" className="select">
-                    <option value="prioridade">Prioridade</option>
+
+                <select 
+                    name="prioridade" 
+                    className="select"
+                    onChange={(e) => setFiltroPrioridade(e.target.value)}
+                    value={filtroPrioridade}
+                >
+                    <option value="">Prioridade</option>
                     <option value="alta">Alta prioridade</option>
                     <option value="media">Média prioridade</option>
                     <option value="baixa">Baixa prioridade</option>
                 </select>
-                <select name="categoria" className="select">
-                    <option value="categoria">Categoria</option>
+
+                <select 
+                    name="categoria" 
+                    className="select"
+                    onChange={(e) => setFiltroCategoria(e.target.value)}
+                    value={filtroCategoria}
+                >
+                    <option value="">Categoria</option>
                     <option value="estudos">Estudos</option>
                     <option value="projetos">Projetos</option>
                     <option value="carreira">Carreira</option>
                     <option value="pessoal">Pessoal</option>
                     <option value="lazer">Lazer</option>
                 </select>
+
                 <Button variante="btn-principal" titulo="+ Nova Tarefa" onClick={aoCriarTarefa}/>
+            
             </nav>
+
             <div className="lista-de-tarefas">
                 <h2>Tarefas</h2>
                 <div>
-                    {tarefas.length === 0 ? (
+                    {tarefasFiltradas.length === 0 ? (
                         <div className="vazio">Não existem tarefas</div>
                         ):(
-                        tarefas.map((tarefa, id)=>(
+                        tarefasFiltradas.map((tarefa, id)=>(
                             <ListaTarefas 
                                 id={tarefa.id}
                                 titulo={tarefa.titulo} 
