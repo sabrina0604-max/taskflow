@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Sidebar from './componentes/Sidebar'
 import Inicio from './pages/Inicio'
@@ -7,8 +7,12 @@ import NovaTarefa from './pages/NovaTarefa'
 function App() {
 
   const [telaAtual, setTelaAtual] = useState("inicio")
-  const [tarefas, setTarefas] = useState([])
+  const [tarefas, setTarefas] = useState(JSON.parse(localStorage.getItem("tarefas")) || [])
   const [tarefaEditando, setTarefaEditando] = useState(null)
+
+  useEffect(() => {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas))
+}, [tarefas])
 
   function adicionarTarefa(novaTarefa){
     const existe = tarefas.some((tarefa) => tarefa.id === novaTarefa.id)
