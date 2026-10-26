@@ -30,6 +30,9 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa, ed
         )
     })
 
+    const tarefasOrdenadas = [...tarefasFiltradas].sort((a, b) => {
+        return new Date(a.vencimento).getTime() - new Date(b.vencimento).getTime()
+    })
 
     return(
         <div className="tela-principal">
@@ -98,10 +101,10 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa, ed
             <div className="lista-de-tarefas">
                 <h2>Tarefas</h2>
                 <div>
-                    {tarefasFiltradas.length === 0 ? (
+                    {tarefasOrdenadas.length === 0 ? (
                         <div className="vazio">Não existem tarefas</div>
                         ):(
-                        tarefasFiltradas.map((tarefa)=>(
+                        tarefasOrdenadas.map((tarefa)=>(
                             <ListaTarefas 
                                 key={tarefa.id}
                                 id={tarefa.id}
