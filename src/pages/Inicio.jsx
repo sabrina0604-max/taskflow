@@ -124,6 +124,7 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa, ed
                                 titulo={tarefa.titulo} 
                                 categoria={tarefa.categoria} 
                                 prioridade={tarefa.prioridade}
+                                vencimento={tarefa.vencimento}
                                 status={tarefa.status === "concluidas"}
                                 alternarStatusTarefa={alternarStatusTarefa}
                                 excluirTarefa={excluirTarefa}

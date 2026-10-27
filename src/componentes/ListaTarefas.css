@@ -9,6 +9,7 @@
     display: flex;
 }
 
+
 .descricao{
     display: flex;
     flex-direction: column;
@@ -16,21 +17,57 @@
 }
 
 .descricao .titulo{
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
     margin-bottom: 5px;
+    text-transform: capitalize;
 }
 
-.tipos{
+
+.tipos {
+    display: flex;
+    align-items: center;
+    gap: 7px;
     font-size: 15px;
     color: #6b7a9d;
+    text-transform: capitalize;
+}
+
+.bolinha {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.bolinha.estudos {
+    background-color: #8B5CF6;
+}
+
+.bolinha.projetos {
+    background-color: #3B82F6;
+}
+
+.bolinha.carreira {
+    background-color: #F59E0B;
+}
+
+.bolinha.pessoal {
+    background-color: #60C794;
+}
+
+.bolinha.lazer {
+    background-color: #E879C1;
 }
 
 .acoes{
     display: flex;
-    justify-content: space-around;
-    width: 200px;
-    gap: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    width: 260px;
+    flex-shrink: 0;
+    gap: 12px;
 }
 
 .status{
@@ -59,4 +96,22 @@
 
 .linha:last-child{
     border: none;
+}
+
+.aviso-atrasada{
+    color: #EF4444;
+    background-color: #fff1f2;
+    border-radius: 12px;
+    padding: 6px 9px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.aviso-atrasada-container{
+    width: 62px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
 }

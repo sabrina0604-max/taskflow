@@ -66,6 +66,7 @@ function NovaTarefa({aoCancelar, aoCriarTarefa, tarefaEditando}){
                             onChange={(e) => setCategoria(e.target.value)} 
                             value={categoria}
                         >
+                            <option value="">Selecione a categoria</option>
                             <option value="estudos">Estudos</option>
                             <option value="projetos">Projetos</option>
                             <option value="carreira">Carreira</option>

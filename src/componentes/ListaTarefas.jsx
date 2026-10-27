@@ -4,8 +4,13 @@ import Button from './Button'
 import './ListaTarefas.css'
 
 
+function ListaTarefas({id, titulo, categoria, prioridade, vencimento, status, alternarStatusTarefa, excluirTarefa, editarTarefa}){
 
-function ListaTarefas({id, titulo, categoria, prioridade, status, alternarStatusTarefa, excluirTarefa, editarTarefa}){
+    const hoje = new Date()
+    hoje.setHours(0,0,0,0)
+
+    const atrasada = !status && vencimento && new Date(vencimento + "T00:00:00") < hoje
+
     return(
         <>
         <div className='lista'>
@@ -15,11 +20,20 @@ function ListaTarefas({id, titulo, categoria, prioridade, status, alternarStatus
                     <div>
                         <p className='titulo'>{titulo}</p>
                     </div>
-                        <p className='tipos'><span>•</span>{categoria} • {prioridade}</p>
+                    <p className='tipos'>
+                        <span className={`bolinha ${categoria}`}></span>
+                        {categoria} • {prioridade} prioridade
+                    </p>
                 </div>
             </div>
 
-            <div className='acoes'>    
+            <div className='acoes'>  
+
+                <div className='aviso-atrasada-container'>
+                    {atrasada &&(
+                        <p className='aviso-atrasada'>Atrasada</p>
+                    )}  
+                </div>    
 
                 {status ?(
                     <p className='status true'>Concluida</p>
