@@ -21,6 +21,17 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa, ed
         return tarefa.status === "concluidas"
     })
 
+    const hoje = new Date()
+    hoje.setHours(0,0,0,0)
+
+    const tarefasAtrasadas = tarefas.filter((tarefa) => {
+        return(
+            tarefa.status === "pendentes" &&
+            tarefa.vencimento &&
+            new Date(tarefa.vencimento +"T00:00:00") < hoje
+        )
+    })
+
     const tarefasFiltradas = tarefas.filter((tarefa) => {
         return (
             (filtroStatus === "todas" || tarefa.status === filtroStatus) &&
@@ -44,7 +55,7 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa, ed
                 <Cards variante="tarefas" icone={<FontAwesomeIcon icon={faClipboardList}/>} titulo="Total de tarefas" quantidade={tarefas.length}/>
                 <Cards variante="pendentes" icone={<FontAwesomeIcon icon={faClock} />} titulo="Pendentes" quantidade={tarefasPendentes.length}/>
                 <Cards variante="concluidas" icone={<FontAwesomeIcon icon={faCheck} />} titulo="Concluídas" quantidade={tarefasConcluidas.length}/>
-                <Cards variante="atrasadas" icone={<FontAwesomeIcon icon={faStar} />} titulo="Atrasadas" quantidade={0}/>
+                <Cards variante="atrasadas" icone={<FontAwesomeIcon icon={faStar} />} titulo="Atrasadas" quantidade={tarefasAtrasadas.length}/>
             </div>
             <nav className="pesquisa">
 
