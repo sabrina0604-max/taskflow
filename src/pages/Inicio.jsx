@@ -32,9 +32,11 @@ function Inicio({aoCriarTarefa, tarefas, alternarStatusTarefa, excluirTarefa, ed
         )
     })
 
+    const idTarefasAtrasadas = tarefasAtrasadas.map((tarefa) => tarefa.id)
+
     const tarefasFiltradas = tarefas.filter((tarefa) => {
         return (
-            (filtroStatus === "todas" || tarefa.status === filtroStatus) &&
+            (filtroStatus === "todas" || tarefa.status === filtroStatus || (filtroStatus === "atrasadas" && idTarefasAtrasadas.includes(tarefa.id))) &&
             (filtroPrioridade === "" || tarefa.prioridade === filtroPrioridade) &&
             (filtroCategoria === "" || tarefa.categoria === filtroCategoria) &&
             (filtroTitulo === "" || tarefa.titulo.toLowerCase().includes(filtroTitulo.toLowerCase()))
